@@ -1,224 +1,233 @@
-
+{
+  "albunes": [
     {
-        "albunes" : [  
-            {"album":"Master of Puppets",
-            "artista" :"Metallica",
-            "canciones":[{
-                "titulo": "01-Battery",
-                "duracion": "5:12",
-                "ruta":"01 - Battery.mp3"
-            },
-            {
-                "titulo": "02-Master of Puppets",
-                "duracion": "8:38",
-                "ruta": "02 - Master Of Puppets.mp3"
-            },
-            {
-                "titulo": "03-The thing that should not be",
-                "duracion": "6:37",
-                "ruta" : "03 - The Thing That Should Not Be.mp3"
-            },
-            {
-                "titulo": "04-Welcome Home",
-                "duracion": "6:27",
-                "ruta" : "04 - Welcome Home.mp3"
-            },
-            {
-                "titulo": "05-Disposable Heroes",
-                "duracion": "8:17",
-                "ruta" : "05 - Disposable Heroes.mp3"
-            },
-            {
-                "titulo": "06-Leper Messiah",
-                "duracion": "5:40",
-                "ruta" : "06 - Leper Messiah.mp3"
-            },
-            {
-                "titulo": "07-Orion",
-                "duracion": "8:28",
-                "ruta" : "07 - Orion.mp3"
-            },
-            {
-                "titulo": "08-Damage",
-                "duracion": "5:30",
-                "ruta" : "08 - Damage.mp3"
-            }]
+      "album": "Master of Puppets",
+      "artista": "Metallica",
+      "canciones": [
+        {
+          "titulo": "01-Battery",
+          "duracion": "5:12",
+          "ruta": "01 - Battery.mp3"
         },
         {
-            "album":"Ride The Lightning",
-            "artista" :"Metallica",
-            "canciones":[{
-                "titulo": "01-Fight fire with fire",
-                "duracion": "4:44",
-                "ruta" : "01 - Fight Fire With Fire.mp3"
-            },
-            {
-                "titulo": "02-Ride the lightning",
-                "duracion": "6:37",
-                "ruta" : "02 - Ride The Lightning.mp3"
-            }, 
-            {
-                "titulo": "03-For Whom the bell tolls",
-                "duracion": "5:11",
-                "ruta" : "08 - For Whom The Bell Tolls.mp3"
-            },
-            {
-                "titulo": "04-Fade to black",
-                "duracion": "6:53",
-                "ruta" : "04 - Fade To Black.mp3"
-            },
-            {
-                "titulo": "05-Trapped under ice",
-                "duracion": "4:04",
-                "ruta" : "05 - Trapped Under Ice.mp3"
-            }, 
-            {
-                "titulo": "06-Escape",
-                "duracion": "4:24",
-                "ruta" : "06 - Escape.mp3"
-            }, 
-            {
-                "titulo": "07-Creeping death",
-                "duracion": "6:36",
-                "ruta" : "07 - Creeping Death.mp3"
-            }, 
-            {
-                "titulo": "08-The call of ktulu",
-                "duracion": "8:54",
-                "ruta" : "08 - The Call Of Ktulu.mp3"
-            }] 
+          "titulo": "02-Master of Puppets",
+          "duracion": "8:38",
+          "ruta": "02 - Master Of Puppets.mp3"
         },
         {
-            "album":"All Hope Is Gone",
-            "artista" :"slipknot",
-            "canciones":[{
-                "titulo": "01-.execute.",
-                "duracion": "1:48",
-                "ruta" : "01 - .execute..mp3"
-            },
-            {
-                "titulo": "02-Gematria",
-                "duracion": "6:01",
-                "ruta" : "02 - Gematria.mp3"
-            }, 
-            {
-                "titulo": "03-Sulfur",
-                "duracion": "4:37",
-                "ruta" : "08 - Sulfur.mp3"
-            },
-            {
-                "titulo": "04-Psychosocial",
-                "duracion": "4:43",
-                "ruta" : "04 - Psychosocial.mp3"
-            },
-            {
-                "titulo": "05-Dead Memories",
-                "duracion": "4:28",
-                "ruta" : "05 - Dead Memories.mp3"
-            }, 
-            {
-                "titulo": "06-Vendetta",
-                "duracion": "5:15",
-                "ruta" : "06 - Vendetta.mp3"
-            }, 
-            {
-                "titulo": "07-Butcher's hook",
-                "duracion": "4:14",
-                "ruta" : "07 - Butcher's Hook.mp3"
-            }, 
-            {
-                "titulo": "08-Gehenna",
-                "duracion": "6:53",
-                "ruta" : "08 - Gehenna.mp3"
-            },
-            {
-                "titulo": "09-This Cold Black",
-                "duracion": "4:40",
-                "ruta" : "09 - This Cold Black.mp3"
-            },
-            {
-                "titulo": "10-Where Lies Continue",
-                "duracion": "5:36",
-                "ruta" : "10 - Where Lies Continue.mp3"
-            },
-            {
-                "titulo": "11-Snuff",
-                "duracion": "4:36",
-                "ruta" : "11 - Snuff.mp3"
-            },
-            {
-                "titulo": "12-All Hope Is Gone",
-                "duracion": "4:45",
-                "ruta" : "12 - All Hope Is Gone.mp3"
-            }] 
+          "titulo": "03-The thing that should not be",
+          "duracion": "6:37",
+          "ruta": "03 - The Thing That Should Not Be.mp3"
         },
         {
-            "album":"La ciudad de los arboles",
-            "artista" :"Mago de oz",
-            "canciones":[{
-                "titulo": "01-El Espiritu Del Bosque",
-                "duracion": "1:46",
-                "ruta" : "01 - El Espiritu Del Bosque.mp3"
-            },
-            {
-                "titulo": "02-La Ciudad De Los Arboles",
-                "duracion": "6:02",
-                "ruta" : "02 - La Ciudad De Los Arboles.mp3"
-            }, 
-            {
-                "titulo": "03-Mi Nombre Es Rock & Roll",
-                "duracion": "6:03",
-                "ruta" : "08 - Mi Nombre Es Rock & Roll.mp3"
-            },
-            {
-                "titulo": "04-El Rincon De Los Sentidos",
-                "duracion": "4:38",
-                "ruta" : "04 - El Rincon De Los Sentidos.mp3"
-            },
-            {
-                "titulo": "05-Deja De Llorar (Y Vuelvete A Levantar)",
-                "duracion": "4:18",
-                "ruta" : "05 - Deja De Llorar (Y Vuelvete A Levantar).mp3"
-            }, 
-            {
-                "titulo": "06-La Cancion De Los Deseos",
-                "duracion": "4:01",
-                "ruta" : "06 - La Cancion De Los Deseos.mp3"
-            }, 
-            {
-                "titulo": "07-Y Ahora Voy A Salir",
-                "duracion": "3:52",
-                "ruta" : "07 - Y Ahora Voy A Salir.mp3"
-            }, 
-            {
-                "titulo": "08-Runa Llena",
-                "duracion": "4:46",
-                "ruta" : "08 - Runa Llena.mp3"
-            },
-            {
-                "titulo": "09-Resacosix En La Barra",
-                "duracion": "3:46",
-                "ruta" : "09 - Resacosix En La Barra.mp3"
-            },
-            {
-                "titulo": "10-No Queda Sino Batirnos",
-                "duracion": "4:19",
-                "ruta" : "10 - No Queda Sino Batirnos.mp3"
-            },
-            {
-                "titulo": "11-Sin Ti Seria Silencio (Parte II)",
-                "duracion": "4:42",
-                "ruta" : "11 - Sin Ti Seria Silencio (Parte II).mp3"
-            },
-            {
-                "titulo": "12-Si Molesto Me Quedo",
-                "duracion": "4:53",
-                "ruta" : "12 - Si Molesto Me Quedo.mp3"
-            },
-            {
-                "titulo": "13-El Espiritu Del Bosque II",
-                "duracion": "1:13",
-                "ruta" : "13 - El Espiritu Del Bosque II.mp3"
-            }] 
-        }]
+          "titulo": "04-Welcome Home",
+          "duracion": "6:27",
+          "ruta": "04 - Welcome Home.mp3"
+        },
+        {
+          "titulo": "05-Disposable Heroes",
+          "duracion": "8:17",
+          "ruta": "05 - Disposable Heroes.mp3"
+        },
+        {
+          "titulo": "06-Leper Messiah",
+          "duracion": "5:40",
+          "ruta": "06 - Leper Messiah.mp3"
+        },
+        {
+          "titulo": "07-Orion",
+          "duracion": "8:28",
+          "ruta": "07 - Orion.mp3"
+        },
+        {
+          "titulo": "08-Damage",
+          "duracion": "5:30",
+          "ruta": "08 - Damage.mp3"
+        }
+      ]
+    },
+    {
+      "album": "All Hope Is Gone",
+      "artista": "slipknot",
+      "canciones": [
+        {
+          "titulo": "01-.execute.",
+          "duracion": "1:48",
+          "ruta": "01 - .execute..mp3"
+        },
+        {
+          "titulo": "02-Gematria",
+          "duracion": "6:01",
+          "ruta": "02 - Gematria.mp3"
+        },
+        {
+          "titulo": "03-Sulfur",
+          "duracion": "4:37",
+          "ruta": "08 - Sulfur.mp3"
+        },
+        {
+          "titulo": "04-Psychosocial",
+          "duracion": "4:43",
+          "ruta": "04 - Psychosocial.mp3"
+        },
+        {
+          "titulo": "05-Dead Memories",
+          "duracion": "4:28",
+          "ruta": "05 - Dead Memories.mp3"
+        },
+        {
+          "titulo": "06-Vendetta",
+          "duracion": "5:15",
+          "ruta": "06 - Vendetta.mp3"
+        },
+        {
+          "titulo": "07-Butcher's hook",
+          "duracion": "4:14",
+          "ruta": "07 - Butcher's Hook.mp3"
+        },
+        {
+          "titulo": "08-Gehenna",
+          "duracion": "6:53",
+          "ruta": "08 - Gehenna.mp3"
+        },
+        {
+          "titulo": "09-This Cold Black",
+          "duracion": "4:40",
+          "ruta": "09 - This Cold Black.mp3"
+        },
+        {
+          "titulo": "10-Where Lies Continue",
+          "duracion": "5:36",
+          "ruta": "10 - Where Lies Continue.mp3"
+        },
+        {
+          "titulo": "11-Snuff",
+          "duracion": "4:36",
+          "ruta": "11 - Snuff.mp3"
+        },
+        {
+          "titulo": "12-All Hope Is Gone",
+          "duracion": "4:45",
+          "ruta": "12 - All Hope Is Gone.mp3"
+        }
+      ]
+    },
+    {
+      "album": "La ciudad de los arboles",
+      "artista": "Mago de oz",
+      "canciones": [
+        {
+          "titulo": "01-El Espiritu Del Bosque",
+          "duracion": "1:46",
+          "ruta": "01 - El Espiritu Del Bosque.mp3"
+        },
+        {
+          "titulo": "02-La Ciudad De Los Arboles",
+          "duracion": "6:02",
+          "ruta": "02 - La Ciudad De Los Arboles.mp3"
+        },
+        {
+          "titulo": "03-Mi Nombre Es Rock & Roll",
+          "duracion": "6:03",
+          "ruta": "08 - Mi Nombre Es Rock & Roll.mp3"
+        },
+        {
+          "titulo": "04-El Rincon De Los Sentidos",
+          "duracion": "4:38",
+          "ruta": "04 - El Rincon De Los Sentidos.mp3"
+        },
+        {
+          "titulo": "05-Deja De Llorar (Y Vuelvete A Levantar)",
+          "duracion": "4:18",
+          "ruta": "05 - Deja De Llorar (Y Vuelvete A Levantar).mp3"
+        },
+        {
+          "titulo": "06-La Cancion De Los Deseos",
+          "duracion": "4:01",
+          "ruta": "06 - La Cancion De Los Deseos.mp3"
+        },
+        {
+          "titulo": "07-Y Ahora Voy A Salir",
+          "duracion": "3:52",
+          "ruta": "07 - Y Ahora Voy A Salir.mp3"
+        },
+        {
+          "titulo": "08-Runa Llena",
+          "duracion": "4:46",
+          "ruta": "08 - Runa Llena.mp3"
+        },
+        {
+          "titulo": "09-Resacosix En La Barra",
+          "duracion": "3:46",
+          "ruta": "09 - Resacosix En La Barra.mp3"
+        },
+        {
+          "titulo": "10-No Queda Sino Batirnos",
+          "duracion": "4:19",
+          "ruta": "10 - No Queda Sino Batirnos.mp3"
+        },
+        {
+          "titulo": "11-Sin Ti Seria Silencio (Parte II)",
+          "duracion": "4:42",
+          "ruta": "11 - Sin Ti Seria Silencio (Parte II).mp3"
+        },
+        {
+          "titulo": "12-Si Molesto Me Quedo",
+          "duracion": "4:53",
+          "ruta": "12 - Si Molesto Me Quedo.mp3"
+        },
+        {
+          "titulo": "13-El Espiritu Del Bosque II",
+          "duracion": "1:13",
+          "ruta": "13 - El Espiritu Del Bosque II.mp3"
+        }
+      ]
+    },
+    {
+      "album": "Ride The Lightning",
+      "artista": "Metallica",
+      "canciones": [
+        {
+          "titulo": "01-Fight fire with fire",
+          "duracion": "4:44",
+          "ruta": "01 - Fight Fire With Fire.mp3"
+        },
+        {
+          "titulo": "02-Ride the lightning",
+          "duracion": "6:37",
+          "ruta": "02 - Ride The Lightning.mp3"
+        },
+        {
+          "titulo": "03-For Whom the bell tolls",
+          "duracion": "5:11",
+          "ruta": "08 - For Whom The Bell Tolls.mp3"
+        },
+        {
+          "titulo": "04-Fade to black",
+          "duracion": "6:53",
+          "ruta": "04 - Fade To Black.mp3"
+        },
+        {
+          "titulo": "05-Trapped under ice",
+          "duracion": "4:04",
+          "ruta": "05 - Trapped Under Ice.mp3"
+        },
+        {
+          "titulo": "06-Escape",
+          "duracion": "4:24",
+          "ruta": "06 - Escape.mp3"
+        },
+        {
+          "titulo": "07-Creeping death",
+          "duracion": "6:36",
+          "ruta": "07 - Creeping Death.mp3"
+        },
+        {
+          "titulo": "08-The call of ktulu",
+          "duracion": "8:54",
+          "ruta": "08 - The Call Of Ktulu.mp3"
+        }
+      ]
     }
+  ]
+}
