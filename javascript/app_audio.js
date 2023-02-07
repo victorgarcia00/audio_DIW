@@ -18,6 +18,7 @@ fetch("./Json/albunes.json")
     caja_canciones.classList.add("lista");
     for (let index = 0; index < nombre_album.length; index++) {
       let titulo = document.createElement("h1");
+      titulo.setAttribute("style", "color:red;");
       let ul_lista = document.createElement("ul");
 
       a = data.albunes[index].canciones.length;
@@ -29,11 +30,13 @@ fetch("./Json/albunes.json")
         console.log(data.albunes[index].canciones[i].titulo);
         //  console.log(i);
         let li_lista = document.createElement("li");
-        li_lista.innerHTML = `${data.albunes[index].canciones[i]}`;
-        li_lista.append(data.albunes[index].canciones[i]);
+        li_lista.setAttribute("style", "color:white");
+        // li_lista.innerHTML = `${data.albunes[index].canciones[i].titulo}`;
+        li_lista.append(data.albunes[index].canciones[i].titulo);
         ul_lista.appendChild(li_lista);
         // console(a[index]);
       }
+      titulo.append(data.albunes[index].album)
       caja_canciones.appendChild(titulo);
       caja_canciones.appendChild(ul_lista);
     }
