@@ -8,7 +8,6 @@ fetch("./Json/albunes.json")
     for (let a = 0; a < nombre_album.length; a++) {
       console.log(data.albunes[a].album);
     }
-    // console.log(data.albunes[0].canciones[0]);
 
     let cuerpo = document.querySelector("body");
     let pie = document.querySelector("footer");
@@ -23,27 +22,21 @@ fetch("./Json/albunes.json")
 
       a = data.albunes[index].canciones.length;
       // console.log(a);
-      a.forEach((element) => {
-        // console.log(element);
+      console.log("entrada a li ");
+
+      for (let i = 0; i < a; i++) {
+        console.log("dentro ");
+        console.log(data.albunes[index].canciones[i].titulo);
+        //  console.log(i);
         let li_lista = document.createElement("li");
-        li_lista.innerHTML = `${data.albunes[index].canciones.element}`;
+        li_lista.innerHTML = `${data.albunes[index].canciones[i]}`;
         li_lista.append(data.albunes[index].canciones[i]);
         ul_lista.appendChild(li_lista);
-      });
-      // for (let i = 0; i < a.length; i++) {
-      //   console.log(i);
-      //   let li_lista = document.createElement("li");
-      //   li_lista.innerHTML = `${data.albunes[index].canciones[i]}`;
-      //   li_lista.append(data.albunes[index].canciones[i]);
-      //   ul_lista.appendChild(li_lista);
-      // }
+        // console(a[index]);
+      }
       caja_canciones.appendChild(titulo);
       caja_canciones.appendChild(ul_lista);
     }
     seccion.appendChild(caja_canciones);
     cuerpo.insertBefore(seccion, pie);
-
-    // for (let index = 0; index < nombre_album.length; index++) {
-
-    // }
   });
