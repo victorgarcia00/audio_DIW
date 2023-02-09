@@ -1,4 +1,3 @@
-// let nombre_album = document.getElementsByClassName("album");
 const button = document.querySelectorAll(".album");
 let a = new Array();
 var repro_canciones;
@@ -24,27 +23,6 @@ Array.from(document.querySelectorAll(".album")).forEach((element) => {
                 data,
                 repro_canciones
               );
-              // caja_canciones = document.createElement("div");
-              // caja_canciones.classList.add("lista");
-              // // for (let index = 0; index < nombre_album.length; index++) {
-              // let titulo = document.createElement("h1");
-              // titulo.setAttribute("style", "color:red;");
-              // let ul_lista = document.createElement("ul");
-
-              // a = data.albunes[index].canciones.length;
-
-              // for (let i = 0; i < a; i++) {
-              //   let li_lista = document.createElement("li");
-              //   li_lista.setAttribute("style", "color:white");
-
-              //   li_lista.append(data.albunes[index].canciones[i].titulo);
-              //   ul_lista.appendChild(li_lista);
-              // }
-              // titulo.append(data.albunes[index].album);
-              // caja_canciones.appendChild(titulo);
-              // caja_canciones.appendChild(ul_lista);
-              // // }
-              // repro_canciones.appendChild(caja_canciones);
             } else {
               crearLista(
                 data.albunes[index].canciones.length,
@@ -52,27 +30,6 @@ Array.from(document.querySelectorAll(".album")).forEach((element) => {
                 data,
                 repro_canciones
               );
-              // caja_canciones = document.createElement("div");
-              // caja_canciones.classList.add("lista");
-              // // for (let index = 0; index < nombre_album.length; index++) {
-              // let titulo = document.createElement("h1");
-              // titulo.setAttribute("style", "color:red;");
-              // let ul_lista = document.createElement("ul");
-
-              // a = data.albunes[index].canciones.length;
-
-              // for (let i = 0; i < a; i++) {
-              //   let li_lista = document.createElement("li");
-              //   li_lista.setAttribute("style", "color:white");
-
-              //   li_lista.append(data.albunes[index].canciones[i].titulo);
-              //   ul_lista.appendChild(li_lista);
-              // }
-              // titulo.append(data.albunes[index].album);
-              // caja_canciones.appendChild(titulo);
-              // caja_canciones.appendChild(ul_lista);
-              // // }
-              // repro_canciones.appendChild(caja_canciones);
             }
           }
         }
@@ -83,7 +40,7 @@ Array.from(document.querySelectorAll(".album")).forEach((element) => {
 function crearLista(numero_array, index, data, repro_canciones) {
   caja_canciones = document.createElement("div");
   caja_canciones.classList.add("lista");
-  // for (let index = 0; index < nombre_album.length; index++) {
+
   let titulo = document.createElement("h1");
   titulo.setAttribute("style", "color:red;");
   let ul_lista = document.createElement("ul");
@@ -93,13 +50,17 @@ function crearLista(numero_array, index, data, repro_canciones) {
   for (let i = 0; i < a; i++) {
     let li_lista = document.createElement("li");
     li_lista.setAttribute("style", "color:white");
+    li_lista.classList.add("btn_cancion");
 
     li_lista.append(data.albunes[index].canciones[i].titulo);
+    li_lista.addEventListener("click", () => {
+      console.log("hola");
+    });
     ul_lista.appendChild(li_lista);
   }
   titulo.append(data.albunes[index].album);
   caja_canciones.appendChild(titulo);
   caja_canciones.appendChild(ul_lista);
-  // }
+
   repro_canciones.appendChild(caja_canciones);
 }
