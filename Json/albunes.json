@@ -3,6 +3,8 @@
     {
       "album": "Master of Puppets",
       "artista": "Metallica",
+      "portada": "Master of Puppets.jpg",
+
       "canciones": [
         {
           "titulo": "01-Battery",
@@ -49,6 +51,7 @@
     {
       "album": "All Hope Is Gone",
       "artista": "slipknot",
+      "portada": "All Hope Is Gone.jpg",
       "canciones": [
         {
           "titulo": "01-.execute.",
@@ -115,6 +118,7 @@
     {
       "album": "La Ciudad de los Arboles",
       "artista": "Mago de oz",
+      "portada": "La Ciudad de los Arboles.jpg",
       "canciones": [
         {
           "titulo": "01-El Espiritu Del Bosque",
@@ -186,6 +190,7 @@
     {
       "album": "Ride the Lightning",
       "artista": "Metallica",
+      "portada": "Ride the Lightning.jpg",
       "canciones": [
         {
           "titulo": "01-Fight fire with fire",
