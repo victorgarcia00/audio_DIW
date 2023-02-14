@@ -30,8 +30,9 @@ function Recorrido_1(valor_p) {
       for (let index = 0; index < data.albunes.length; index++) {
         /*   Comparamos el valor_p con la informacion del nombre del Album */
         if (valor_p == data.albunes[index].album) {
-          /* Guardo posicion del album para mi evento de lista */
-          Album_numero = data.albunes[index].album;
+          /* Guardo posicion del album para mi evento de añadir_audio_div */
+          Album_numero = index;
+
           /*  Comprobamos si existe la clase lista den el HTML */
           if (document.querySelector(".lista")) {
             /* Eliminamos tanto la caratural del album como la respectiva lista y su banner */
@@ -59,6 +60,8 @@ function Recorrido_1(valor_p) {
             );
             /* Creacion de Banner reproductor */
             crearbannerRepro(data, valor_p);
+            /* Funcion Eventos de lista */
+            eventos_lista(data, Album_numero);
           } else {
             //En caso de que no exista la clase lista simplemente creamos todo
 
@@ -73,8 +76,8 @@ function Recorrido_1(valor_p) {
             );
             /* Creacion de Banner reproductor */
             crearbannerRepro(data, valor_p);
-
-            eventos_lista();
+            /* Funcion Eventos de lista */
+            eventos_lista(data, Album_numero);
           }
         }
       }
@@ -142,9 +145,8 @@ function crearbannerRepro() {
   contenido.classList.add("crearbanner");
   /* Insertamos el codigo Html dentro de nuestro div->contenido */
   contenido.innerHTML = ` 
-  <div id="contenedor_barra">
-    <h2 id="seleccionada"></h2>
-    <input id="barra" type="range" name="" min="" value="0" />
+  <div class="contenedor_barra">
+   
   </div>
   <div class="flex controles">
     <div>
@@ -177,13 +179,109 @@ function crearbannerRepro() {
 }
 
 /* Creacion de "solo" evento li */
-function eventos_lista() {
+function eventos_lista(data, x_album) {
   /* let  que recoje todos los li con la clase "btn_cancion" dentro del HTML  */
   let lista_accion = document.querySelectorAll(".btn_cancion");
   /* Bucle para recorrerlo todos los li y añadirles un evento "click" */
   for (let index = 0; index < lista_accion.length; index++) {
     lista_accion[index].addEventListener("click", function () {
-      console.log("agregando audio");
+      añadir_cancion_div(data, x_album, index);
+      controles();
     });
+  }
+}
+
+/* Pasamos por parametros tanto json como la posicin del album seleccionado */
+function añadir_cancion_div(data, posicion_album, posicion_cancion) {
+  if (document.querySelector(".div_au")) {
+    document.querySelector(".div_au").remove();
+    let audio = document.querySelector(".contenedor_barra");
+
+    let audio_contenido = document.createElement("div");
+
+    audio_contenido.classList.add("div_au");
+    audio_contenido.innerHTML = `  
+    <audio id="cancion" autoplay src="./audio/${data.albunes[posicion_album].album}/${data.albunes[posicion_album].canciones[posicion_cancion].ruta}">
+    Texto para navegadores que no soportan la etiqueta audio...
+    </audio>
+    <h2 id="seleccionada"></h2>
+    <input id="barra" type="range" name="" min="" value="0" /> `;
+
+    audio.appendChild(audio_contenido);
+  } else {
+    let audio = document.querySelector(".contenedor_barra");
+
+    let audio_contenido = document.createElement("div");
+
+    audio_contenido.classList.add("div_au");
+    audio_contenido.innerHTML = `  
+    <audio id="cancion" autoplay src="./audio/${data.albunes[posicion_album].album}/${data.albunes[posicion_album].canciones[posicion_cancion].ruta}">
+    Texto para navegadores que no soportan la etiqueta audio...
+    </audio>
+    <h2 id="seleccionada"></h2>
+    <input id="barra" type="range" name="" min="" value="0" /> `;
+
+    audio.appendChild(audio_contenido);
+  }
+}
+
+function controles() {
+  let tema = document.querySelector("#cancion");
+  //Controles
+  let boton_play = document.querySelector("#play");
+
+  boton_play.addEventListener("click", () => {
+    reproducir(tema, boton_play);
+  });
+
+  // document
+  //   .querySelector("#stop")
+  //   .addEventListener("click", parar(tema, boton_play));
+
+  // let control_volumen = document.querySelector("#volumen");
+  // let barra = document.querySelector("#barra");
+  // document.querySelector("#anterior").addEventListener("click", retroceder);
+  // document.querySelector("#siguiente").addEventListener("click", avanzar);
+  // document.querySelector("#loop").addEventListener("click", repetir);
+  // document.querySelector("#random").addEventListener("click", aleatorio);
+
+  // document.querySelector("#volumen").addEventListener("change", () => {
+  //   tema.volume = control_volumen.value;
+  // });
+
+  // document.querySelector("#mute").addEventListener("click", () => {
+  //   tema.volume = 0;
+  //   control_volumen.value = 0;
+  // });
+  // document.querySelector("#volum_max").addEventListener("click", () => {
+  //   tema.volume = 1;
+  //   control_volumen.value = 1;
+  // });
+
+  // barra.addEventListener("change", () => {
+  //   tema.currentTime = barra.value;
+  // });
+}
+/* function parar(tema, boton_play) {
+  tema.pause();
+  tema.currentTime = 0;
+  boton_play.src = "./images/play.svg";
+} */
+function reproducir(tema, boton_play) {
+  console.log("repro");
+  if (tema.paused) {
+    tema.play();
+    // tema.addEventListener("timeupdate", () => {
+    //   barra.value = tema.currentTime;
+    //   barra.max = tema.duration;
+    // });
+
+    boton_play.src = "./images/pause.svg";
+
+    // tema.addEventListener("ended", continuar);
+    // continuar();
+  } else {
+    tema.pause();
+    boton_play.src = "./images/play.svg";
   }
 }
