@@ -131,11 +131,11 @@ function crear_img_Cromo(data, campo_p) {
        con su respectivo titulos debajo  */
       let contenedor_cromo = document.querySelector(".cromo");
       let cromo_img = document.createElement("img");
-      let cromo_p = document.createElement("h3");
+      // let cromo_p = document.createElement("h3");
       cromo_img.src = "./images/" + data.albunes[index].portada;
-      cromo_p.append(data.albunes[index].album);
+      // cromo_p.append(data.albunes[index].album);
       contenedor_cromo.appendChild(cromo_img);
-      contenedor_cromo.appendChild(cromo_p);
+      // contenedor_cromo.appendChild(cromo_p);
     }
   }
 }

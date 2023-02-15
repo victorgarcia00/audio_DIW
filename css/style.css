@@ -48,7 +48,7 @@ h1 {
 .albumDisponibles::-webkit-scrollbar:horizontal,.lista::-webkit-scrollbar:horizontal {
   width: 10px;
 }
-.albumDisponibles::-webkit-scrollbar-thumb {
+.albumDisponibles::-webkit-scrollbar-thumb,.lista::-webkit-scrollbar-thumb {
   background-color: #797979;
   border-radius: 10px;
   border: 2px solid #f1f2f3;
@@ -110,6 +110,7 @@ h1 {
 }
 
 .lista {
+  width: 50%;
   align-items: center;
   text-align: left;
   margin-left: 50px;
