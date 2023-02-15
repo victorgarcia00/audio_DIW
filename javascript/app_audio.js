@@ -50,6 +50,7 @@ function Recorrido_1(valor_p) {
             /*Eliminacion de Banner */
             let as = document.querySelector(".reproductor");
             var banner = document.querySelector(".crearbanner");
+            as.style.cssText = "width: 70%;";
             as.removeChild(banner);
             /*Creacion img Cromo Album-cancion*/
             crear_img_Cromo(data, valor_p);
