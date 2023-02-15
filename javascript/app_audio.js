@@ -4,8 +4,9 @@ let Album_numero;
 var caja_canciones;
 let div_caja1 = document.querySelector(".caja1 ");
 let tema_global;
-//boton_play_global necesita valor para funcionar
-let boton_play_global = 0;
+let boton_play_global;
+let control_volumen;
+let barra;
 /*Recorrido de json  para albunes*/
 Array.from(document.querySelectorAll(".album")).forEach((element) => {
   /* Eventos a Fotos  Album*/
@@ -200,9 +201,8 @@ function eventos_lista(data, album_valor) {
         data.albunes[album_valor].album +
         "/" +
         data.albunes[album_valor].canciones[index].ruta;
-
-      reproducir();
       controles();
+      reproducir();
     });
   }
 }
@@ -214,19 +214,36 @@ function controles() {
   console.log(boton_play_global);
   boton_play_global.addEventListener("click", reproducir);
   document.querySelector("#stop").addEventListener("click", parar);
+  control_volumen = document.querySelector("#volumen");
+  barra = document.querySelector("#barra");
+  // document.querySelector("#anterior").addEventListener("click", retroceder);
+  document.querySelector("#siguiente").addEventListener("click", avanzar);
+
+  document.querySelector("#volumen").addEventListener("change", () => {
+    tema_global.volume = control_volumen.value;
+  });
+  document.querySelector("#mute").addEventListener("click", () => {
+    tema_global.volume = 0;
+    control_volumen.value = 0;
+  });
+  document.querySelector("#volum_max").addEventListener("click", () => {
+    tema_global.volume = 1;
+    control_volumen.value = 1;
+  });
+  barra.addEventListener("change", () => {
+    tema_global.currentTime = barra.value;
+  });
 }
 
 //Controles de Reproductor funciones
 
-function cargarCancion(i, nombre_cancion) {
-  console.log(i, nombre_cancion);
-  console.log(tema_global);
-  document.querySelector("#seleccionada").innerHTML = nombre_cancion;
-}
-
 function reproducir() {
   if (tema_global.paused) {
     tema_global.play();
+    tema_global.addEventListener("timeupdate", () => {
+      barra.value = tema_global.currentTime;
+      barra.max = tema_global.duration;
+    });
     boton_play_global.src = "./images/pause.svg";
   } else {
     tema_global.pause();
@@ -238,4 +255,27 @@ function parar() {
   tema_global.pause();
   tema_global.currentTime = 0;
   boton_play_global.src = "./images/play.svg";
+}
+
+function mover_barra() {
+  barra.addEventListener("");
+}
+
+function cargarCancion(i, nombre_cancion) {
+  console.log(i, nombre_cancion);
+  console.log(tema_global);
+  document.querySelector("#seleccionada").innerHTML = nombre_cancion;
+}
+
+function avanzar() {
+  if (posicion >= nombres.length - 1) {
+    posicion = 0;
+  } else {
+    posicion++;
+  }
+
+  cargarCancion(posicion, nombres[posicion]);
+  tema.src = "./audio/" + canciones[posicion];
+  actualizar_seleccion();
+  reproducir();
 }
