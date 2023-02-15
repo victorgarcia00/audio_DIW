@@ -16,6 +16,9 @@ h1 {
   width: 100%;
   text-align: center;
   color: white;
+  position: sticky;
+  top: 0;
+  background-color: darkgray;
 }
 .container {
   width: 80%;
@@ -24,10 +27,11 @@ h1 {
   align-items: center;
   background-color: darkgray;
   padding: 20px;
+  height: 100vh;
 }
 .albumDisponibles {
   display: flex;
-  height: auto;
+  height: 100%;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
@@ -37,20 +41,20 @@ h1 {
   padding: 0 20px;
   /* background-color: #fff; */
 }
-.albumDisponibles::-webkit-scrollbar {
+.albumDisponibles::-webkit-scrollbar,.lista::-webkit-scrollbar{
   -webkit-appearance: none;
 }
 
-.albumDisponibles::-webkit-scrollbar:horizontal {
+.albumDisponibles::-webkit-scrollbar:horizontal,.lista::-webkit-scrollbar:horizontal {
   width: 10px;
 }
 .albumDisponibles::-webkit-scrollbar-thumb {
   background-color: #797979;
-  border-radius: 20px;
+  border-radius: 10px;
   border: 2px solid #f1f2f3;
 }
 
-.albumDisponibles::-webkit-scrollbar-track {
+.albumDisponibles::-webkit-scrollbar-track,.lista::-webkit-scrollbar-track{
   border-radius: 10px;
 }
 .album {
@@ -75,17 +79,19 @@ h1 {
 
 .reproductor {
   display: flex;
-  text-align: center;
   flex-direction: column;
   align-items: center;
+  justify-content: centers;
   /* background-color: #594f4f; */
   width: 70%;
   align-self: flex-start;
+
 }
 .caja1 {
   display: flex;
   flex-direction: row;
   margin: 50px 0px 50px 0px;
+  height: 70%;
 }
 .cromo{
   display: flex;
@@ -93,6 +99,7 @@ h1 {
   align-items: center;
   flex-direction: column;
   width: 50%;
+  height: 70%;
 }
 .cromo > img {
   text-align: center;
@@ -107,6 +114,8 @@ h1 {
   text-align: left;
   margin-left: 50px;
   margin-right: 25px;
+  height: 400px;
+  overflow-y: scroll;
 }
 
 .lista > h1 {
@@ -154,6 +163,7 @@ input {
 .crearbanner {
   background-color: #ac4343;
   width: 100%;
+  height: 30%;
 }
 footer {
   background: #fff;
