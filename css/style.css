@@ -95,6 +95,15 @@ h1 {
   align-items: center;
   text-align: left;
   margin-left: 50px;
+  margin-right: 25px;
+}
+
+.lista > h1 {
+  text-align: center;
+  color: red;
+}
+.lista > ul > li {
+  color: white;
 }
 
 section {

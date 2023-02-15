@@ -3,7 +3,9 @@ const button = document.querySelectorAll(".album");
 let Album_numero;
 var caja_canciones;
 let div_caja1 = document.querySelector(".caja1 ");
-
+let tema_global;
+//boton_play_global necesita valor para funcionar
+let boton_play_global = 0;
 /*Recorrido de json  para albunes*/
 Array.from(document.querySelectorAll(".album")).forEach((element) => {
   /* Eventos a Fotos  Album*/
@@ -49,8 +51,8 @@ function Recorrido_1(valor_p) {
             let as = document.querySelector(".reproductor");
             var banner = document.querySelector(".crearbanner");
             as.removeChild(banner);
-            /*Creacion reproductor cancion*/
-            crearReproductor(data, valor_p);
+            /*Creacion img Cromo Album-cancion*/
+            crear_img_Cromo(data, valor_p);
             /*Creacion de Lista */
             crearLista(
               data.albunes[index].canciones.length,
@@ -59,14 +61,14 @@ function Recorrido_1(valor_p) {
               div_caja1
             );
             /* Creacion de Banner reproductor */
-            crearbannerRepro(data, valor_p);
+            crearbannerRepro();
             /* Funcion Eventos de lista */
             eventos_lista(data, Album_numero);
           } else {
             //En caso de que no exista la clase lista simplemente creamos todo
 
-            /*Creacion reproductor cancion*/
-            crearReproductor(data, valor_p);
+            /*Creacion img Cromo Album-cancion*/
+            crear_img_Cromo(data, valor_p);
             /*Creacion de Lista */
             crearLista(
               data.albunes[index].canciones.length,
@@ -75,7 +77,7 @@ function Recorrido_1(valor_p) {
               div_caja1
             );
             /* Creacion de Banner reproductor */
-            crearbannerRepro(data, valor_p);
+            crearbannerRepro();
             /* Funcion Eventos de lista */
             eventos_lista(data, Album_numero);
           }
@@ -95,7 +97,7 @@ function crearLista(numero_array, index, data, div_caja1) {
   caja_canciones.classList.add("lista");
 
   let titulo = document.createElement("h1");
-  titulo.setAttribute("style", "color:red;");
+  // titulo.setAttribute("style", "color:red;");
   /* Creamos UL  */
   let ul_lista = document.createElement("ul");
   /* pasaremos el valor de la posicion de album para otra variable dentro de esta funcion */
@@ -103,7 +105,7 @@ function crearLista(numero_array, index, data, div_caja1) {
   /* Bucle para crear tantas li como canciones existan */
   for (let i = 0; i < contenedor_array; i++) {
     let li_lista = document.createElement("li");
-    li_lista.setAttribute("style", "color:white");
+    // li_lista.setAttribute("style", "color:white");
     li_lista.classList.add("btn_cancion");
     li_lista.append(data.albunes[index].canciones[i].titulo);
     ul_lista.appendChild(li_lista);
@@ -119,7 +121,7 @@ function crearLista(numero_array, index, data, div_caja1) {
 /* Funcion que recibe los parametros fetch (data), y el p de dentro de los Albunes
  (en el codigo HTML) */
 
-function crearReproductor(data, campo_p) {
+function crear_img_Cromo(data, campo_p) {
   /* Concatenamos el valor de los p que tiene la Lista de ALBUM (parte de arriba) con la extension.jpg */
   campo_p = campo_p + ".jpg";
   /* Realizamos un bucle al json de las portadas para ver si su nombre es igual al nuestro  */
@@ -144,10 +146,13 @@ function crearbannerRepro() {
   let contenido = document.createElement("div");
   contenido.classList.add("crearbanner");
   /* Insertamos el codigo Html dentro de nuestro div->contenido */
+  // <audio id="cancion" autoplay src="./audio/${data.albunes[posicion_album].album}/${data.albunes[posicion_album].canciones[0].ruta}"></audio>
   contenido.innerHTML = ` 
-  <div class="contenedor_barra">
-   
-  </div>
+    <audio id="cancion" autoplay src="./audio">
+    Texto para navegadores que no soportan la etiqueta audio...
+    </audio>
+    <h2 id="seleccionada"></h2>
+    <input id="barra" type="range" name="" min="" value="0" /> 
   <div class="flex controles">
     <div>
       <img id="anterior" src="./images/cancion_anterior.svg" alt=" " />
@@ -179,109 +184,58 @@ function crearbannerRepro() {
 }
 
 /* Creacion de "solo" evento li */
-function eventos_lista(data, x_album) {
-  /* let  que recoje todos los li con la clase "btn_cancion" dentro del HTML  */
-  let lista_accion = document.querySelectorAll(".btn_cancion");
-  /* Bucle para recorrerlo todos los li y añadirles un evento "click" */
-  for (let index = 0; index < lista_accion.length; index++) {
-    lista_accion[index].addEventListener("click", function () {
-      añadir_cancion_div(data, x_album, index);
+function eventos_lista(data, album_valor) {
+  /*   Creamos varaible tema aqui para usarla en otras funcniones de los controles()*/
+  let tema = document.querySelector("#cancion");
+  tema_global = tema;
+  let li_lista = document.querySelectorAll("li");
+  let posicion = 0;
+  for (let index = 0; index < li_lista.length; index++) {
+    li_lista[index].addEventListener("click", function () {
+      posicion = index;
+      li_lista[index].classList.add("btn_cancion_seleccionada");
+      cargarCancion(posicion, li_lista[index].innerText);
+      tema.src =
+        "./audio/" +
+        data.albunes[album_valor].album +
+        "/" +
+        data.albunes[album_valor].canciones[index].ruta;
+
+      reproducir();
       controles();
     });
   }
 }
 
-/* Pasamos por parametros tanto json como la posicin del album seleccionado */
-function añadir_cancion_div(data, posicion_album, posicion_cancion) {
-  if (document.querySelector(".div_au")) {
-    document.querySelector(".div_au").remove();
-    let audio = document.querySelector(".contenedor_barra");
-
-    let audio_contenido = document.createElement("div");
-
-    audio_contenido.classList.add("div_au");
-    audio_contenido.innerHTML = `  
-    <audio id="cancion" autoplay src="./audio/${data.albunes[posicion_album].album}/${data.albunes[posicion_album].canciones[posicion_cancion].ruta}">
-    Texto para navegadores que no soportan la etiqueta audio...
-    </audio>
-    <h2 id="seleccionada"></h2>
-    <input id="barra" type="range" name="" min="" value="0" /> `;
-
-    audio.appendChild(audio_contenido);
-  } else {
-    let audio = document.querySelector(".contenedor_barra");
-
-    let audio_contenido = document.createElement("div");
-
-    audio_contenido.classList.add("div_au");
-    audio_contenido.innerHTML = `  
-    <audio id="cancion" autoplay src="./audio/${data.albunes[posicion_album].album}/${data.albunes[posicion_album].canciones[posicion_cancion].ruta}">
-    Texto para navegadores que no soportan la etiqueta audio...
-    </audio>
-    <h2 id="seleccionada"></h2>
-    <input id="barra" type="range" name="" min="" value="0" /> `;
-
-    audio.appendChild(audio_contenido);
-  }
-}
-
 function controles() {
-  let tema = document.querySelector("#cancion");
   //Controles
   let boton_play = document.querySelector("#play");
-
-  boton_play.addEventListener("click", () => {
-    reproducir(tema, boton_play);
-  });
-
-  // document
-  //   .querySelector("#stop")
-  //   .addEventListener("click", parar(tema, boton_play));
-
-  // let control_volumen = document.querySelector("#volumen");
-  // let barra = document.querySelector("#barra");
-  // document.querySelector("#anterior").addEventListener("click", retroceder);
-  // document.querySelector("#siguiente").addEventListener("click", avanzar);
-  // document.querySelector("#loop").addEventListener("click", repetir);
-  // document.querySelector("#random").addEventListener("click", aleatorio);
-
-  // document.querySelector("#volumen").addEventListener("change", () => {
-  //   tema.volume = control_volumen.value;
-  // });
-
-  // document.querySelector("#mute").addEventListener("click", () => {
-  //   tema.volume = 0;
-  //   control_volumen.value = 0;
-  // });
-  // document.querySelector("#volum_max").addEventListener("click", () => {
-  //   tema.volume = 1;
-  //   control_volumen.value = 1;
-  // });
-
-  // barra.addEventListener("change", () => {
-  //   tema.currentTime = barra.value;
-  // });
+  boton_play_global = boton_play;
+  console.log(boton_play_global);
+  boton_play_global.addEventListener("click", reproducir);
+  document.querySelector("#stop").addEventListener("click", parar);
 }
-/* function parar(tema, boton_play) {
-  tema.pause();
-  tema.currentTime = 0;
-  boton_play.src = "./images/play.svg";
-} */
-function reproducir(tema, boton_play) {
-  console.log("repro");
-  if (tema.paused) {
-    tema.play();
-    // tema.addEventListener("timeupdate", () => {
-    //   barra.value = tema.currentTime;
-    //   barra.max = tema.duration;
-    // });
 
-    boton_play.src = "./images/pause.svg";
+//Controles de Reproductor funciones
 
-    // tema.addEventListener("ended", continuar);
-    // continuar();
+function cargarCancion(i, nombre_cancion) {
+  console.log(i, nombre_cancion);
+  console.log(tema_global);
+  document.querySelector("#seleccionada").innerHTML = nombre_cancion;
+}
+
+function reproducir() {
+  if (tema_global.paused) {
+    tema_global.play();
+    boton_play_global.src = "./images/pause.svg";
   } else {
-    tema.pause();
-    boton_play.src = "./images/play.svg";
+    tema_global.pause();
+    boton_play_global.src = "./images/play.svg";
   }
+}
+
+function parar() {
+  tema_global.pause();
+  tema_global.currentTime = 0;
+  boton_play_global.src = "./images/play.svg";
 }
