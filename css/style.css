@@ -1,171 +1,353 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Metal Mania", cursive;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Metal Mania", cursive;
+    text-decoration: none;
 }
+
 body {
-  background-color: black;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  height: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
+
 h1 {
-  align-self: flex-start;
-  width: 100%;
-  text-align: center;
-  color: white;
-  position: sticky;
-  top: 0;
-  background-color: darkgray;
+    align-self: flex-start;
+    width: 100%;
+    text-align: center;
+    color: white;
+    position: sticky;
+    top: 0;
+    background-color: darkgray;
 }
+
 .container {
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-color: darkgray;
-  padding: 20px;
-  height: 100vh;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* background-color: darkgray; */
+    height: 100vh;
 }
+
 .albumDisponibles {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  width:30%;
-  overflow-y: scroll;
-  align-self: flex-start;
-  padding: 0 20px;
-  /* background-color: #fff; */
-}
-.albumDisponibles::-webkit-scrollbar,.lista::-webkit-scrollbar{
-  -webkit-appearance: none;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 40%;
+    overflow-y: scroll;
+    align-self: flex-start;
+    padding: 0 20px;
+    /* background-color: #fff; */
 }
 
-.albumDisponibles::-webkit-scrollbar:horizontal,.lista::-webkit-scrollbar:horizontal {
-  width: 10px;
-}
-.albumDisponibles::-webkit-scrollbar-thumb,.lista::-webkit-scrollbar-thumb {
-  background-color: #797979;
-  border-radius: 10px;
-  border: 2px solid #f1f2f3;
+.album:hover {
+    scale: 1.1;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -ms-transition: 0.4s;
+    -o-transition: 0.4s;
 }
 
-.albumDisponibles::-webkit-scrollbar-track,.lista::-webkit-scrollbar-track{
-  border-radius: 10px;
+.albumDisponibles::-webkit-scrollbar,
+.lista::-webkit-scrollbar {
+    -webkit-appearance: none;
 }
+
+.albumDisponibles::-webkit-scrollbar:horizontal,
+.lista::-webkit-scrollbar:horizontal {
+    width: 10px;
+}
+
+.albumDisponibles::-webkit-scrollbar-thumb,
+.lista::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 10px;
+    border: 2px solid #f1f2f3;
+}
+
+.albumDisponibles::-webkit-scrollbar-track,
+.lista::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
 .album {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border: 2px solid black;
-  width: 100%;
-  margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid black;
+    width: 100%;
+    margin: 10px 0;
 }
+
 .album p {
-  padding: 10px;
-  width: 100%;
-  text-align: center;
-  background-color: #c60e0e;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    background-color: #c60e0e;
+    color: white;
+    font-size: 1.5em;
 }
+
 .album img {
-  max-width: 100%;
-  width: 100%;
+    max-width: 100%;
+    width: 100%;
 }
 
 .reproductor {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: centers;
-  /* background-color: #594f4f; */
-  width: 70%;
-  align-self: flex-start;
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*background-color: #594f4f;
+    */
+    width: 60%;
+    height: auto;
+    align-self: flex-start;
+    background-color: #000;
+    border: 1px solid black;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
 
-}
 .caja1 {
-  display: flex;
-  flex-direction: row;
-  margin: 50px 0px 50px 0px;
-  height: 70%;
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    width: 100%;
 }
-.cromo{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 50%;
-  height: 70%;
+
+.cromo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 70%;
 }
-.cromo > img {
-  text-align: center;
-  max-width: 100%;
-  width: 100%;
-  /* width: 200px;
-  height: 200px; */
+
+.cromo>img {
+    text-align: center;
+    max-width: 50%;
+    width: 100%;
 }
 
 .lista {
-  width: 50%;
-  align-items: center;
-  text-align: left;
-  margin-left: 50px;
-  margin-right: 25px;
-  height: 400px;
-  overflow-y: scroll;
+    width: 100%;
+    align-items: center;
+    text-align: left;
+    height: 400px;
+    overflow-y: scroll;
 }
 
-.lista > h1 {
-  text-align: center;
-  color: red;
+.lista>h1 {
+    text-align: center;
+    color: red;
+    background-color: #000;
 }
-ul{
-  list-style-type: none;
+
+lista>ul {
+    list-style-type: none;
 }
-.lista > ul > li {
-  color: white;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 20px;
+
+.lista>ul>li {
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
 }
-.lista > ul > li:hover{
-  color: red;
+
+.lista>ul>li:hover {
+    color: red;
+    font-size: 24px;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -ms-transition: 0.4s;
+    -o-transition: 0.4s;
 }
 
 section {
-  width: 75%;
-}
-section div {
-  text-align: center;
-}
-.flex {
-  display: flex;
-  justify-content: space-between;
-}
-input {
-  width: 100%;
-}
-.controles {
-  width: 100%;
-  margin: 10px auto;
-  padding: 5px;
-  border: 1px solid black;
-  border-radius: 5px;
+    width: 75%;
 }
 
-.controles > div > img {
-  width: 32px;
-  cursor: pointer;
+section div {
+    text-align: center;
 }
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+input {
+    width: 100%;
+}
+
+.controles {
+    width: 100%;
+    margin: 10px auto;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.controles>div>img {
+    width: 32px;
+    cursor: pointer;
+}
+
 .crearbanner {
-  background-color: #ac4343;
-  width: 100%;
-  height: 30%;
+    background-color: #ac4343;
+    width: 100%;
+    height: 30%;
 }
+
 footer {
-  background: #fff;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer>p {
+    color: white;
+    width: 10%;
+}
+
+footer>ul {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+footer>ul>li>a:visited {
+    color: white;
+}
+
+.lista>ul>li.btn_cancion_seleccionada {
+    color: #ff0000;
+}
+
+#barra,
+#volumen {
+    appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
+}
+
+#barra::-webkit-slider-thumb,
+#volumen::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #000;
+    cursor: pointer;
+}
+
+.controles {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    border: none;
+}
+
+.controlMusica {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#barra {
+    align-self: center;
+}
+
+.flex {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.crearbanner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+    .albumDisponibles {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+        height: 450px;
+        flex-wrap: wrap;
+    }
+    .albumDisponibles>h1 {
+        display: block;
+        width: 100%;
+        font-size: 1.5rem;
+    }
+    .reproductor {
+        width: 100%;
+        margin-top: 25px;
+        border: 2px solid #000;
+        background: #000;
+    }
+    .reproductor>.caja1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;
+    }
+    .reproductor>.caja1>img,
+    .lista {
+        width: 100%;
+        margin: 0;
+    }
+    .cromo {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .lista>h1 {
+        background: #000;
+    }
+    .controles {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        border: none;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .controles {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        border: none;
+    }
 }
