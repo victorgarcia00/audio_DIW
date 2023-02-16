@@ -3,6 +3,12 @@ const button = document.querySelectorAll(".album");
 let Album_numero;
 var caja_canciones;
 let div_caja1 = document.querySelector(".caja1 ");
+let data_valor;
+let posicion_global_lista;
+let album_valor_global;
+
+let repitiendo = false;
+let azar = false;
 let tema_global;
 let boton_play_global;
 let control_volumen;
@@ -27,8 +33,9 @@ function Recorrido_1(valor_p) {
   fetch("./Json/albunes.json")
     .then((data) => data.json())
     .then((data) => {
+      data_valor = data;
       /* Aviso de craecion de reproductor */
-      alert("Creando Reproductor de : " + valor_p);
+      // alert("Creando Reproductor de : " + valor_p);
       /*Recorremos nombres de los albunes en el JSON */
       for (let index = 0; index < data.albunes.length; index++) {
         /*   Comparamos el valor_p con la informacion del nombre del Album */
@@ -194,6 +201,8 @@ function eventos_lista(data, album_valor) {
   for (let index = 0; index < li_lista.length; index++) {
     li_lista[index].addEventListener("click", function () {
       posicion = index;
+      posicion_global_lista = posicion;
+      album_valor_global = album_valor;
       li_lista[index].classList.add("btn_cancion_seleccionada");
       cargarCancion(posicion, li_lista[index].innerText);
       tema.src =
@@ -211,13 +220,15 @@ function controles() {
   //Controles
   let boton_play = document.querySelector("#play");
   boton_play_global = boton_play;
-  console.log(boton_play_global);
+  // console.log(boton_play_global);
   boton_play_global.addEventListener("click", reproducir);
   document.querySelector("#stop").addEventListener("click", parar);
   control_volumen = document.querySelector("#volumen");
   barra = document.querySelector("#barra");
-  // document.querySelector("#anterior").addEventListener("click", retroceder);
+  document.querySelector("#anterior").addEventListener("click", retroceder);
   document.querySelector("#siguiente").addEventListener("click", avanzar);
+  document.querySelector("#loop").addEventListener("click", repetir);
+  document.querySelector("#random").addEventListener("click", aleatorio);
 
   document.querySelector("#volumen").addEventListener("change", () => {
     tema_global.volume = control_volumen.value;
@@ -245,6 +256,7 @@ function reproducir() {
       barra.max = tema_global.duration;
     });
     boton_play_global.src = "./images/pause.svg";
+    tema_global.addEventListener("ended", continuar);
   } else {
     tema_global.pause();
     boton_play_global.src = "./images/play.svg";
@@ -261,21 +273,153 @@ function mover_barra() {
   barra.addEventListener("");
 }
 
+function continuar() {
+  tema_global.removeEventListener("ended", continuar);
+  if (azar == true) {
+    console.log("azar de continaur=" + azar);
+    if (azar) {
+      console.log("azar de continaur=" + azar);
+      console.log(posicion_global_lista);
+      console.log(data_valor.albunes[album_valor_global].canciones.length);
+      posicion_global_lista = Math.floor(
+        Math.random() *
+          (data_valor.albunes[album_valor_global].canciones.length - 0 + 1) +
+          0
+      );
+      console.log(posicion_global_lista);
+    } else {
+      console.log("azar de continaur=" + azar);
+    }
+  } else if (repitiendo == true) {
+    if (repitiendo) {
+    } else {
+      if (posicion_global_lista >= posicion_global_lista.length - 1) {
+        posicion = 0;
+      }
+    }
+  } else {
+    posicion_global_lista++;
+    console.log("cancion finalizada");
+    fetch("./Json/albunes.json")
+      .then((res) => res.json())
+      .then((res) => {
+        cargarCancion(
+          posicion_global_lista,
+          res.albunes[album_valor_global].canciones[posicion_global_lista]
+            .titulo
+        );
+
+        tema_global.src =
+          "./audio/" +
+          res.albunes[album_valor_global].album +
+          "/" +
+          res.albunes[album_valor_global].canciones[posicion_global_lista].ruta;
+
+        reproducir();
+      });
+  }
+
+  fetch("./Json/albunes.json")
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+      cargarCancion(
+        posicion_global_lista,
+        res.albunes[album_valor_global].canciones[posicion_global_lista].titulo
+      );
+
+      tema_global.src =
+        "./audio/" +
+        res.albunes[album_valor_global].album +
+        "/" +
+        res.albunes[album_valor_global].canciones[posicion_global_lista].ruta;
+
+      reproducir();
+    });
+}
+
 function cargarCancion(i, nombre_cancion) {
-  console.log(i, nombre_cancion);
-  console.log(tema_global);
+  // console.log(i + " " + nombre_cancion);
+  // console.log(i, nombre_cancion);
+  // console.log(tema_global);
   document.querySelector("#seleccionada").innerHTML = nombre_cancion;
 }
 
 function avanzar() {
-  if (posicion >= nombres.length - 1) {
-    posicion = 0;
+  if (
+    posicion_global_lista >=
+    data_valor.albunes[album_valor_global].canciones.length - 1
+  ) {
+    posicion_global_lista = 0;
   } else {
-    posicion++;
+    posicion_global_lista++;
   }
 
-  cargarCancion(posicion, nombres[posicion]);
-  tema.src = "./audio/" + canciones[posicion];
-  actualizar_seleccion();
+  fetch("./Json/albunes.json")
+    .then((res) => res.json())
+    .then((res) => {
+      cargarCancion(
+        posicion_global_lista,
+        res.albunes[album_valor_global].canciones[posicion_global_lista].titulo
+      );
+
+      tema_global.src =
+        "./audio/" +
+        res.albunes[album_valor_global].album +
+        "/" +
+        res.albunes[album_valor_global].canciones[posicion_global_lista].ruta;
+
+      reproducir();
+    });
+
+  // actualizar_seleccion();
+}
+
+function retroceder() {
+  if (posicion_global_lista == 0) {
+    posicion_global_lista =
+      data_valor.albunes[album_valor_global].canciones.length - 1;
+  } else {
+    posicion_global_lista--;
+  }
+
+  fetch("./Json/albunes.json")
+    .then((res) => res.json())
+    .then((res) => {
+      cargarCancion(
+        posicion_global_lista,
+        res.albunes[album_valor_global].canciones[posicion_global_lista].titulo
+      );
+      tema_global.src =
+        "./audio/" +
+        res.albunes[album_valor_global].album +
+        "/" +
+        res.albunes[album_valor_global].canciones[posicion_global_lista].ruta;
+    });
+
+  // actualizar_seleccion();
+
   reproducir();
+}
+
+// document.querySelector("#loop").addEventListener("click", repetir);
+function repetir() {
+  document.querySelector("#loop").classList.toggle("activo");
+  if (repitiendo) {
+    repitiendo = false;
+  } else {
+    repitiendo = true;
+  }
+  console.log(repitiendo);
+}
+
+// document.querySelector("#random").addEventListener("click", aleatorio);
+function aleatorio() {
+  document.querySelector("#random").classList.toggle("activo");
+  if (azar) {
+    azar = false;
+  } else {
+    azar = true;
+  }
+  console.log("azar= " + azar);
 }
