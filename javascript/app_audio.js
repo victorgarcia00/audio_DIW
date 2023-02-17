@@ -6,7 +6,7 @@ let div_caja1 = document.querySelector(".caja1 ");
 let data_valor;
 let posicion_global_lista;
 let album_valor_global;
-
+let li_lista;
 let repitiendo = false;
 let azar = false;
 let tema_global;
@@ -196,7 +196,7 @@ function eventos_lista(data, album_valor) {
   /*   Creamos varaible tema aqui para usarla en otras funcniones de los controles()*/
   let tema = document.querySelector("#cancion");
   tema_global = tema;
-  let li_lista = document.querySelectorAll("li");
+  li_lista = document.querySelectorAll("li");
   let posicion = 0;
   for (let index = 0; index < li_lista.length; index++) {
     li_lista[index].addEventListener("click", function () {
@@ -218,6 +218,7 @@ function eventos_lista(data, album_valor) {
 }
 
 function seleccion() {
+  console.log("seleccion");
   var arrLista = document.querySelectorAll(".btn_cancion");
   for (let i = 0; i < arrLista.length; i++) {
     arrLista[i].classList.remove("btn_cancion_seleccionada");
@@ -258,6 +259,7 @@ function controles() {
 
 function reproducir() {
   boton_play_global.src = "./images/pause.svg";
+
   if (tema_global.paused) {
     tema_global.play();
     tema_global.addEventListener("timeupdate", () => {
@@ -284,10 +286,11 @@ function mover_barra() {
 
 function continuar() {
   tema_global.removeEventListener("ended", continuar);
+
   if (azar == true) {
-    // console.log("azar de continaur=" + azar);
+    console.log("azar de continaur=" + azar);
     if (azar) {
-      //   console.log("azar de continaur=" + azar);
+      // console.log("azar de continaur=" + azar);
       console.log(posicion_global_lista);
       console.log(data_valor.albunes[album_valor_global].canciones.length);
       posicion_global_lista = Math.floor(
@@ -326,6 +329,12 @@ function continuar() {
           res.albunes[album_valor_global].canciones[posicion_global_lista].ruta;
 
         reproducir();
+        seleccion();
+        var arrLista = document.querySelectorAll(".btn_cancion");
+
+        arrLista[posicion_global_lista].classList.add(
+          "btn_cancion_seleccionada"
+        );
       });
   }
 
@@ -345,6 +354,10 @@ function continuar() {
         res.albunes[album_valor_global].canciones[posicion_global_lista].ruta;
 
       reproducir();
+      seleccion();
+      var arrLista = document.querySelectorAll(".btn_cancion");
+
+      arrLista[posicion_global_lista].classList.add("btn_cancion_seleccionada");
     });
 }
 
@@ -354,22 +367,26 @@ function cargarCancion(i, nombre_cancion) {
   // console.log(tema_global);
   document.querySelector("#seleccionada").innerHTML = nombre_cancion;
 }
-
 function avanzar() {
-  if (azar == true) {
-    // console.log("Aleatorio activado");
-
-    aleatorio();
-    // console.log("funcion pasada aleatorio ok");
-    // console.log(posicion_global_lista);
-    // console.log(data_valor.albunes[album_valor_global].canciones.length);
-    posicion_global_lista = Math.floor(
-      Math.random() *
-        (data_valor.albunes[album_valor_global].canciones.length - 0 + 1) +
-        0
-    );
+  if (azar == true && repitiendo == true) {
     document.querySelector("#random").classList.toggle("activo");
-    // console.log(posicion_global_lista);
+    azar = false;
+  } else {
+  }
+  console.log(azar);
+  if (azar == true) {
+    if (azar) {
+      posicion_global_lista = Math.floor(
+        Math.random() *
+          (data_valor.albunes[album_valor_global].canciones.length - 0 + 1) +
+          0
+      );
+      seleccion();
+      var arrLista = document.querySelectorAll(".btn_cancion");
+
+      arrLista[posicion_global_lista].classList.add("btn_cancion_seleccionada");
+    } else {
+    }
   } else if (repitiendo == true) {
     console.log("repitiendo cancion");
   } else {
@@ -382,23 +399,29 @@ function avanzar() {
     } else {
       posicion_global_lista++;
     }
-    // fetch("./Json/albunes.json")
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     cargarCancion(
-    //       posicion_global_lista,
-    //       res.albunes[album_valor_global].canciones[posicion_global_lista]
-    //         .titulo
-    //     );
+    fetch("./Json/albunes.json")
+      .then((res) => res.json())
+      .then((res) => {
+        cargarCancion(
+          posicion_global_lista,
+          res.albunes[album_valor_global].canciones[posicion_global_lista]
+            .titulo
+        );
 
-    //     tema_global.src =
-    //       "./audio/" +
-    //       res.albunes[album_valor_global].album +
-    //       "/" +
-    //       res.albunes[album_valor_global].canciones[posicion_global_lista].ruta;
+        tema_global.src =
+          "./audio/" +
+          res.albunes[album_valor_global].album +
+          "/" +
+          res.albunes[album_valor_global].canciones[posicion_global_lista].ruta;
 
-    //     reproducir();
-    //   });
+        reproducir();
+        seleccion();
+        var arrLista = document.querySelectorAll(".btn_cancion");
+
+        arrLista[posicion_global_lista].classList.add(
+          "btn_cancion_seleccionada"
+        );
+      });
   }
   fetch("./Json/albunes.json")
     .then((res) => res.json())
@@ -411,7 +434,7 @@ function avanzar() {
         posicion_global_lista,
         res.albunes[album_valor_global].canciones[posicion_global_lista].titulo
       );
-      boton_play_global.src = "./images/pause.svg";
+
       tema_global.src =
         "./audio/" +
         res.albunes[album_valor_global].album +
@@ -419,14 +442,59 @@ function avanzar() {
         res.albunes[album_valor_global].canciones[posicion_global_lista].ruta;
     });
   reproducir();
+  seleccion();
+  var arrLista = document.querySelectorAll(".btn_cancion");
+
+  arrLista[posicion_global_lista].classList.add("btn_cancion_seleccionada");
 }
 
 function retroceder() {
-  if (posicion_global_lista == 0) {
-    posicion_global_lista =
-      data_valor.albunes[album_valor_global].canciones.length - 1;
+  if (azar == true && repitiendo == true) {
+    document.querySelector("#random").classList.toggle("activo");
+    azar = false;
   } else {
-    posicion_global_lista--;
+  }
+  if (azar == true) {
+    if (azar) {
+      posicion_global_lista = Math.floor(
+        Math.random() *
+          (data_valor.albunes[album_valor_global].canciones.length - 0 + 1) +
+          0
+      );
+      seleccion();
+      var arrLista = document.querySelectorAll(".btn_cancion");
+
+      arrLista[posicion_global_lista].classList.add("btn_cancion_seleccionada");
+    } else {
+    }
+  } else if (repitiendo == true) {
+    console.log("repitiendo cancion");
+  } else {
+    if (posicion_global_lista == 0) {
+      posicion_global_lista =
+        data_valor.albunes[album_valor_global].canciones.length - 1;
+    } else {
+      posicion_global_lista--;
+    }
+    fetch("./Json/albunes.json")
+      .then((res) => res.json())
+      .then((res) => {
+        cargarCancion(
+          posicion_global_lista,
+          res.albunes[album_valor_global].canciones[posicion_global_lista]
+            .titulo
+        );
+        tema_global.src =
+          "./audio/" +
+          res.albunes[album_valor_global].album +
+          "/" +
+          res.albunes[album_valor_global].canciones[posicion_global_lista].ruta;
+      });
+    reproducir();
+    seleccion();
+    var arrLista = document.querySelectorAll(".btn_cancion");
+
+    arrLista[posicion_global_lista].classList.add("btn_cancion_seleccionada");
   }
 
   fetch("./Json/albunes.json")
@@ -442,10 +510,12 @@ function retroceder() {
         "/" +
         res.albunes[album_valor_global].canciones[posicion_global_lista].ruta;
     });
-
-  // actualizar_seleccion();
-
   reproducir();
+  seleccion();
+  var arrLista = document.querySelectorAll(".btn_cancion");
+
+  arrLista[posicion_global_lista].classList.add("btn_cancion_seleccionada");
+  // actualizar_seleccion();
 }
 
 // document.querySelector("#loop").addEventListener("click", repetir);
@@ -464,7 +534,6 @@ function aleatorio() {
   document.querySelector("#random").classList.toggle("activo");
   if (azar) {
     azar = false;
-    // document.querySelector("#random").classList.remove("activo");
   } else {
     azar = true;
   }
