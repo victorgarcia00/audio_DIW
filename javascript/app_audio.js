@@ -1,5 +1,5 @@
 const button = document.querySelectorAll(".album");
-// let a = new Array();
+
 let Album_numero;
 var caja_canciones;
 let div_caja1 = document.querySelector(".caja1 ");
@@ -362,7 +362,6 @@ function continuar() {
         }
       });
   }
-  /* */
 
   fetch("./Json/albunes.json")
     .then((res) => res.json())
@@ -410,7 +409,6 @@ function avanzar() {
     } else {
     }
   } else if (repitiendo == true) {
-    boton_play_global.src = "./images/pause.svg";
   } else {
     if (
       posicion_global_lista >=
@@ -463,6 +461,7 @@ function avanzar() {
   var arrLista = document.querySelectorAll(".btn_cancion");
 
   arrLista[posicion_global_lista].classList.add("btn_cancion_seleccionada");
+  boton_play_global.src = "./images/pause.svg";
 }
 
 function retroceder() {
@@ -485,7 +484,6 @@ function retroceder() {
     } else {
     }
   } else if (repitiendo == true) {
-    boton_play_global.src = "./images/pause.svg";
   } else {
     if (posicion_global_lista == 0) {
       posicion_global_lista =
@@ -532,6 +530,7 @@ function retroceder() {
   var arrLista = document.querySelectorAll(".btn_cancion");
 
   arrLista[posicion_global_lista].classList.add("btn_cancion_seleccionada");
+  boton_play_global.src = "./images/pause.svg";
 }
 
 function repetir() {
