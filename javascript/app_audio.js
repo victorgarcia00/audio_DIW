@@ -218,7 +218,6 @@ function eventos_lista(data, album_valor) {
 }
 
 function seleccion() {
-  console.log("seleccion");
   var arrLista = document.querySelectorAll(".btn_cancion");
   for (let i = 0; i < arrLista.length; i++) {
     arrLista[i].classList.remove("btn_cancion_seleccionada");
@@ -292,16 +291,12 @@ function continuar() {
   } else {
   }
   if (azar == true) {
-    console.log("azar de continaur=" + azar);
     if (azar) {
-      console.log(posicion_global_lista);
-      console.log(data_valor.albunes[album_valor_global].canciones.length);
       posicion_global_lista = Math.floor(
         Math.random() *
           (data_valor.albunes[album_valor_global].canciones.length - 0 + 1) +
           0
       );
-      console.log(posicion_global_lista);
     } else {
     }
   } else if (repitiendo == true) {
@@ -313,8 +308,7 @@ function continuar() {
     }
   } else {
     posicion_global_lista++;
-    console.log("cancion finalizada");
-    console.log(posicion_global_lista);
+
     fetch("./Json/albunes.json")
       .then((res) => res.json())
       .then((res) => {
@@ -323,7 +317,7 @@ function continuar() {
           res.albunes[album_valor_global].canciones.length
         ) {
           posicion_global_lista = 0;
-          console.log("if ok");
+
           cargarCancion(
             posicion_global_lista,
             res.albunes[album_valor_global].canciones[posicion_global_lista]
@@ -346,7 +340,6 @@ function continuar() {
           tema_global.currentTime = 0;
           boton_play_global.src = "./images/play.svg";
         } else {
-          console.log("ifnot ok");
           cargarCancion(
             posicion_global_lista,
             res.albunes[album_valor_global].canciones[posicion_global_lista]
@@ -374,14 +367,6 @@ function continuar() {
   fetch("./Json/albunes.json")
     .then((res) => res.json())
     .then((res) => {
-      console.log(res);
-      console.log("paso 1");
-      console.log(posicion_global_lista);
-      console.log(
-        res.albunes[album_valor_global].canciones[posicion_global_lista]
-      );
-      console.log("paso 1");
-
       cargarCancion(
         posicion_global_lista,
         res.albunes[album_valor_global].canciones[posicion_global_lista].titulo
@@ -410,7 +395,7 @@ function avanzar() {
     azar = false;
   } else {
   }
-  console.log(azar);
+
   if (azar == true) {
     if (azar) {
       posicion_global_lista = Math.floor(
@@ -425,10 +410,8 @@ function avanzar() {
     } else {
     }
   } else if (repitiendo == true) {
-    console.log("repitiendo cancion");
     boton_play_global.src = "./images/pause.svg";
   } else {
-    console.log("else repitiendo cancion");
     if (
       posicion_global_lista >=
       data_valor.albunes[album_valor_global].canciones.length - 1
@@ -464,10 +447,6 @@ function avanzar() {
   fetch("./Json/albunes.json")
     .then((res) => res.json())
     .then((res) => {
-      console.log(res);
-      console.log(
-        res.albunes[album_valor_global].canciones[posicion_global_lista].titulo
-      );
       cargarCancion(
         posicion_global_lista,
         res.albunes[album_valor_global].canciones[posicion_global_lista].titulo
@@ -506,7 +485,6 @@ function retroceder() {
     } else {
     }
   } else if (repitiendo == true) {
-    console.log("repitiendo cancion");
     boton_play_global.src = "./images/pause.svg";
   } else {
     if (posicion_global_lista == 0) {
@@ -563,7 +541,6 @@ function repetir() {
   } else {
     repitiendo = true;
   }
-  console.log(repitiendo);
 }
 
 function aleatorio() {
@@ -573,5 +550,4 @@ function aleatorio() {
   } else {
     azar = true;
   }
-  console.log("azar= " + azar);
 }
