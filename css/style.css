@@ -20,7 +20,7 @@ h1 {
   color: white;
   position: sticky;
   top: 0;
-  background-color: darkgray;
+  /* background-color: darkgray;   */
 }
 
 .container {
@@ -216,13 +216,16 @@ input {
 
 footer {
   width: 80%;
+  padding: 1%;
   display: flex;
   justify-content: space-between;
 }
 
 footer > p {
+  display: block;
   color: white;
   width: 10%;
+  margin-right: 5%;
 }
 
 footer > ul {
@@ -302,7 +305,9 @@ footer > ul > li > a:visited {
     flex-direction: row;
     width: 100%;
     justify-content: space-around;
-    height: 450px;
+    /* height: 450px;
+     */
+    height: 670px;
     flex-wrap: wrap;
   }
   .albumDisponibles > h1 {

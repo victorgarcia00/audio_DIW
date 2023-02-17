@@ -368,6 +368,7 @@ function avanzar() {
         (data_valor.albunes[album_valor_global].canciones.length - 0 + 1) +
         0
     );
+    document.querySelector("#random").classList.toggle("activo");
     // console.log(posicion_global_lista);
   } else if (repitiendo == true) {
     console.log("repitiendo cancion");
@@ -410,7 +411,7 @@ function avanzar() {
         posicion_global_lista,
         res.albunes[album_valor_global].canciones[posicion_global_lista].titulo
       );
-
+      boton_play_global.src = "./images/pause.svg";
       tema_global.src =
         "./audio/" +
         res.albunes[album_valor_global].album +
@@ -463,6 +464,7 @@ function aleatorio() {
   document.querySelector("#random").classList.toggle("activo");
   if (azar) {
     azar = false;
+    // document.querySelector("#random").classList.remove("activo");
   } else {
     azar = true;
   }
