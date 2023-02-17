@@ -115,7 +115,12 @@ function crearLista(numero_array, index, data, div_caja1) {
     let li_lista = document.createElement("li");
     // li_lista.setAttribute("style", "color:white");
     li_lista.classList.add("btn_cancion");
-    li_lista.append(data.albunes[index].canciones[i].titulo);
+    li_lista.append(
+      data.albunes[index].canciones[i].titulo +
+        " - (" +
+        data.albunes[index].canciones[i].duracion +
+        ")"
+    );
     ul_lista.appendChild(li_lista);
   }
   titulo.append(data.albunes[index].album);
